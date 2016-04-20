@@ -1,9 +1,9 @@
 
 
-def preis_real_t(preis_nominal_t, inf_index_t):
-    return preis_nominal_t / inf_index_t
+def preis_real(t):
+    return preis_nominal(t) / inf_index(t)
 
-def inf_index_t():
+def inf_index(t):
     result = inf[0]+1
     quartal = Q
     while quartal > 0:
@@ -13,14 +13,14 @@ def inf_index_t():
 def inf:
 
 
-def ma_real_t:
-    return ma_nominal_t / inf_index_t
+def ma_real(t):
+    return ma_nominal(t) / inf_index(t)
 
-def ma_wirksam_t:
-    return ( ma_real_t * (1-nh)) + ( ma_wirksam_t-1 * nh )
+def ma_wirksam(t):
+    return ( ma_real(t) * (1-nh)) + ( ma_wirksam(t)-1 * nh )
 
-def mef(ma_wirksam_t, erloes_t-1):
-    value = ma_wirksam_t/erloes_t-1
+def mef(ma_wirksam(t), erloes(t)-1):
+    value = ma_wirksam(t)/erloes(t)-1
     if (value <= 0):
         return -20
 
@@ -56,11 +56,11 @@ def mef(ma_wirksam_t, erloes_t-1):
         way = (value-0.17)/(0.2-0.17)
         return 15 + ( way * (17-15))
 
-def preis_wirksam_t:
-    return preis_real_t / (1+mef_t) * (1+pef_t) + (preis_real_t - preis_real_t-1)**2 / stueck
+def preis_wirksam(t):
+    return preis_real(t) / (1+mef(t)) * (1+pef(t)) + (preis_real(t) - preis_real(t)-1)**2 / stueck
 
 def paf():
-    value = preis_wirksam_t
+    value = preis_wirksam(t)
     if (value <= 4.5):
         return -20
 
@@ -100,11 +100,11 @@ def paf():
         way = (value-8.5)/(9-8.5)
         return 150 - ( way * (150))
 
-def korr_t(mittlerer_preis_wirksam_t, preis_wirksam_t):
-    if preis_wirksam_t <= mittlerer_preis_wirksam_t:
+def korr(t):
+    if preis_wirksam(t) <= mittlerer_preis_wirksam(t):
         return 1
     else:
-        return (mittlerer_preis_wirksam_t/preis_wirksam_t)**2
+        return (mittlerer_preis_wirksam(t)/preis_wirksam(t))**2
 
 def absetzbare_menge(t):
     return paf(t)*k_index(t)*s_index(t)*korr(t)+defizit(t)

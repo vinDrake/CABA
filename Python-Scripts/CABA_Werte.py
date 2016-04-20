@@ -1,5 +1,5 @@
 
 
-inflations_index_fix = [1]
-preis_real_fix = []
+inflations_index = [1]
+preis_real = []
 nachhall = 0.33
