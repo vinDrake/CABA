@@ -10,8 +10,8 @@ def inf_index(t):
         result = result * inf[quartal]+1
     return result
 
-def inf:
-
+def inf():
+    return 0
 
 def ma_real(t):
     return ma_nominal(t) / inf_index(t)
@@ -19,7 +19,7 @@ def ma_real(t):
 def ma_wirksam(t):
     return ( ma_real(t) * (1-nh)) + ( ma_wirksam(t)-1 * nh )
 
-def mef(ma_wirksam(t), erloes(t)-1):
+def mef(t):
     value = ma_wirksam(t)/erloes(t)-1
     if (value <= 0):
         return -20
